@@ -9,9 +9,13 @@
         <h1>
             User Information
         </h1>
-        Name:<input type="text" id="name" maxlength="100">
-        Email:  <input type="text" id="email">
-        Year of birth: <select id="birth-year" style="width: 100px;"></select>
+        <form>
+            Name:<input type="text" id="name" maxlength="100">
+            Email:  <input type="text" id="email">
+            Year of birth: <select id="birth-year" style="width: 100px;"></select>
+            <button type="button" onclick="getUserData();" id="validate">Submit!</button>
+        </form>
+        <p id="result"></p>
         <h1>
             Library Checkout
         </h1>
