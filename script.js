@@ -1,6 +1,7 @@
 var endYear = new Date().getFullYear();
-var options = "";
-for(var birthyear = 1900 ; birthyear <= endYear; birthyear++){
-  options += "<option>"+ birthyear +"</option>";
+var birthYearOptions = document.getElementById("birth-year")
+for(var year = 1900; year <= endYear; year++){
+    var options = document.createElement("option");
+    options.text = year;
+    birthYearOptions.add(options);
 }
-document.getElementById("birth-year") = options;
