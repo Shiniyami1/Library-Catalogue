@@ -9,11 +9,8 @@ for(var year = 1900; year <= endYear; year++){
 var nameInput = document.getElementById("name").value
 //Sanitize Input 
 var sanitizeHTML = function (str) {
-	var temp = "";
-    for (var i = 0; i < str.length; i++) {
-    temp += "&#x"+str.charCodeAt(i).toString(16)+";"
-  }
-  return temp;
+	str = str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return str;
 }
 
 function validateEmail(email) {
@@ -22,6 +19,7 @@ function validateEmail(email) {
 }
 
 var validateBtn = document.getElementById("validate")
+var userInfoForm = document.getElementById("userInfo")
 validateBtn.onclick = function() {
     
     //GET NAME
@@ -37,5 +35,17 @@ validateBtn.onclick = function() {
 
     //GET AGE
     var inputAge = document.getElementById("birth-year").value;
+    if ((endYear - inputAge) >= 18){
+        inputAge = "Adult";
+    }
+    else {
+        inputAge = "Child";
+    }
+
+    //DISPLAY USER INFO
+    userInfoForm.style.display = "none";
+    var displayUserData = document.getElementById("displayUserData");
+    var userDataText = document.createTextNode(inputName + " (" + inputEmail + ") [" + inputAge + "]");
+    displayUserData.appendChild(userDataText);
 
   }
