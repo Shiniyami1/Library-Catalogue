@@ -1,3 +1,7 @@
+//Hide Library Eleemnts until logged in
+var librarySection = document.getElementById("library");
+librarySection.style.display = "none";
+
 //Loop to create and populate select list for birth-year element
 var endYear = new Date().getFullYear();
 var birthYearOptions = document.getElementById("birth-year")
@@ -44,8 +48,29 @@ validateBtn.onclick = function() {
 
     //DISPLAY USER INFO
     userInfoForm.style.display = "none";
-    var displayUserData = document.getElementById("displayUserData");
+    var displayUserData = document.getElementById("result");
     var userDataText = document.createTextNode(inputName + " (" + inputEmail + ") [" + inputAge + "]");
     displayUserData.appendChild(userDataText);
+    //Show Library
+    librarySection.style.display = "block";
 
-  }
+}
+
+//Due Date for Books
+var date = new Date();
+date.setDate(date.getDate() + 30);
+var bookDueDate = document.getElementsByClassName("bookDueDate");
+for (var i = 0; i < bookDueDate.length; i++) {
+    var bookDueDateString = document.createTextNode(date);
+    bookDueDate[i].appendChild(bookDueDateString);
+}
+
+//Due Date for CDs
+var date = new Date();
+date.setDate(date.getDate() + 10);
+var cdDueDateString = document.createTextNode(date);
+var cdDueDate = document.getElementsByClassName("cdDueDate");
+for (var i = 0; i < cdDueDate.length; i++) {
+    var cdDueDateString = document.createTextNode(date);
+    cdDueDate[i].appendChild(cdDueDateString);
+}

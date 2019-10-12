@@ -1,0 +1,12 @@
+table, th, td {
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+img {
+    display: block;
+    max-width:150px;
+    max-height:200px;
+    margin: auto;
+}

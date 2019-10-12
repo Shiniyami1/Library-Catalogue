@@ -3,13 +3,12 @@
     <head>
         <title>SE 3316 - Lab 2</title>
         <meta charset="UTF-8">
-        
+        <link rel="stylesheet" href="lab2.css" />
     </head>
     <body>
         <h1>
             User Information
         </h1>
-        <p id="displayUserData"></p>
         <form id="userInfo">
             Name:<input type="text" id="name" maxlength="100">
             Email:  <input type="text" id="email">
@@ -17,17 +16,114 @@
             <button type="button" id="validate">Submit!</button>
         </form>
         <p id="result"></p>
-        <h1>
-            Library Checkout
-        </h1>
-        <h2>    
-            Items Available:
-        </h2>
-        <ol id="available-items"></ol>
-        <h2>
-            Checkout List:
-        </h2>
-        <ol id="basket"></ol>
+        <div id="library">
+            <h1>
+                Library Checkout
+            </h1>
+            <h2>    
+                Items Available:
+            </h2>
+            <h3>Books + CDs</h3>
+            <table id="available-items">
+                <tr>
+                    <th>Item Picture</th>
+                    <th>Item Name</th> 
+                    <th>Due Date</th>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/compnetworking.jpg" 
+                        alt="Computer Networking Textbook Cover" 
+                        title="Computer Networking: A Top-Down Approach"/>
+                    </td>
+                    <td>Computer Networking: <br> A Top-Down Approach</td>
+                    <td class="bookDueDate"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/Web-Programming-1.png"
+                        alt="Web Programming Cover Art"
+                        title="Web Programming by zyBooks"/>
+                    </td>
+                    <td>Web Programming <br> by zyBooks</td>
+                    <td class="bookDueDate"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/harrypotter7.jpg" 
+                        alt="Harry Potter Book 7" 
+                        title="Harry Potter Book 7"/>
+                    </td>
+                    <td>Harry Potter and <br> the Deathly Hallows</td>
+                    <td class="bookDueDate"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/murder_orient.jpg" 
+                        alt="Murder on Orient Express Book cover" 
+                        title="Murder on the Orient Express"/>
+                    </td>
+                    <td>Murder on the <br> Orient Express</td>
+                    <td class="bookDueDate"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/greatgatsby.jpg" 
+                        alt="Great Gatsby Book Cover" 
+                        title="The Great Gatsby"/>
+                    </td>
+                    <td>The Great Gatsby</td>
+                    <td class="bookDueDate"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/got1.jpg" 
+                        alt="Song of Ice and Fire Book Cover" 
+                        title="Song of Ice and Fire Book"/>
+                    </td>
+                    <td>A Song of Ice & Fire</td>
+                    <td class="bookDueDate"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/coldplayCD.jpg" 
+                        alt="Coldplay Album Cover" 
+                        title="Coldplay Parachutes Album Cover"/>
+                    </td>
+                    <td>Coldplay: <br> Parachutes <br> (Album)</td>
+                    <td class="cdDueDate"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/morelifeCD.jpg" 
+                        alt="More Life Album Cover" 
+                        title="Drake: More Life Album"/>
+                    </td>
+                    <td>Drake: <br> More Life <br> (Album)</td>
+                    <td class="cdDueDate"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/mjbadCD.jpg" 
+                        alt="MJ Bad Album Cover" 
+                        title="MJ: Bad Album Cover"/>
+                    </td>
+                    <td>Michael Jackson: <br> Bad <br> (Album)</td>
+                    <td class="cdDueDate"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/blurryfaceCD.png" 
+                        alt="twenty-one pilots Blurryface Album Cover" 
+                        title="Twenty-One Pilots: Blurryface Album"/>
+                    </td>
+                    <td>Twenty-One Pilots: <br> Blurryface <br> (Album)</td>
+                    <td class="cdDueDate"></td>
+                </tr>
+            </table>
+            <h2>Checkout List: </h2>
+            <ol id="basket"></ol>
+        </div>
         <script type='text/javascript' src='script.js'></script>
     </body>
 </html>
