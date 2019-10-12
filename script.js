@@ -10,25 +10,32 @@ var nameInput = document.getElementById("name").value
 //Sanitize Input 
 var sanitizeHTML = function (str) {
 	var temp = "";
-    for (var i = 0; i < a.length; i++) {
+    for (var i = 0; i < str.length; i++) {
     temp += "&#x"+str.charCodeAt(i).toString(16)+";"
   }
   return temp;
-};
+}
+
 function validateEmail(email) {
     var temp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return temp.test(email);
-  }
-  function getUserData(){
-      var inputName = document.getElementById("name").value;
-      alert(inputName)
-      inputName = sanitizeHTML(inputName);
-      if(validateEmail(document.getElementById("email").value)){
-        var inputEmail = document.getElementById("email").value;
-      }
-      else {
-          alert("Invalid Email Address Entered")
-      }
+}
 
-      var inputAge = document.getElementById("birth-year").value;
+var validateBtn = document.getElementById("validate")
+validateBtn.onclick = function() {
+    
+    //GET NAME
+    var inputName = document.getElementById("name").value;
+    inputName = sanitizeHTML(inputName);
+    
+    //GET EMAIL
+    if(!(validateEmail(document.getElementById("email").value))){
+        alert("Invalid Email Address Entered")
+        return; 
+    }
+    var inputEmail = document.getElementById("email").value;
+
+    //GET AGE
+    var inputAge = document.getElementById("birth-year").value;
+
   }
