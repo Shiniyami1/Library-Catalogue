@@ -60,17 +60,53 @@ validateBtn.onclick = function() {
 var date = new Date();
 date.setDate(date.getDate() + 30);
 var bookDueDate = document.getElementsByClassName("bookDueDate");
+var dueDateForBooks = date.toString();  //Globally Accessible Due Date for Books
 for (var i = 0; i < bookDueDate.length; i++) {
     var bookDueDateString = document.createTextNode(date);
     bookDueDate[i].appendChild(bookDueDateString);
 }
+delete date;
 
 //Due Date for CDs
 var date = new Date();
 date.setDate(date.getDate() + 10);
-var cdDueDateString = document.createTextNode(date);
 var cdDueDate = document.getElementsByClassName("cdDueDate");
+var dueDateForCDs = date.toString();    //Globally Accessible Due Date for CDs
 for (var i = 0; i < cdDueDate.length; i++) {
     var cdDueDateString = document.createTextNode(date);
     cdDueDate[i].appendChild(cdDueDateString);
+}
+
+var addComputer = document.getElementById("addComputer");
+var addWebProg = document.getElementById("addWebProg");
+var addHarryPotter = document.getElementById("addHarryPotter");
+var addOrientExp = document.getElementById("addOrientExp");
+var addGatsby = document.getElementById("addGatsby");
+var addGoT = document.getElementById("addGoT");
+var addColdplay = document.getElementById("addColdplay");
+var addDrake = document.getElementById("addDrake");
+var addMJ = document.getElementById("addMJ");
+var addPilots = document.getElementById("addPilots");
+
+addComputer.onclick = function() {addToCartFunc("Computer Networking: A Top-Down Approach", dueDateForBooks, this.parentNode.parentNode)}; //Simplified second paramater as due date for all books are equivalent
+addWebProg.onclick = function() {addToCartFunc("Web Programming by zyBooks", dueDateForBooks, this.parentNode.parentNode)};
+addHarryPotter.onclick = function() {addToCartFunc("Harry Potter and the Deathly Hallows", dueDateForBooks, this.parentNode.parentNode)};
+addOrientExp.onclick = function() {addToCartFunc("Murder on the Orient Express", dueDateForBooks, this.parentNode.parentNode)};
+addGatsby.onclick = function() {addToCartFunc("The Great Gatsby", dueDateForBooks, this.parentNode.parentNode)};
+addGoT.onclick = function() {addToCartFunc("A Song of Ice & Fire", dueDateForBooks, this.parentNode.parentNode)};
+addColdplay.onclick = function() {addToCartFunc("Coldplay: Parachutes (Album)", dueDateForCDs, this.parentNode.parentNode)};
+addDrake.onclick = function() {addToCartFunc("Drake: More Life (Album)", dueDateForCDs, this.parentNode.parentNode)};
+addMJ.onclick = function() {addToCartFunc("Michael Jackson: Bad (Album)", dueDateForCDs, this.parentNode.parentNode)};
+addPilots.onclick = function() {addToCartFunc("Twenty-One Pilots: Blurryface (Album)", dueDateForCDs, this.parentNode.parentNode)}; 
+
+function addToCartFunc(nameStr, dueStr, obj) {
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(nameStr + " (due on " + dueStr + ")       "));
+    var removeFromCart = document.createElement("button");
+    removeFromCart.setAttribute("class", "removeFromCart");
+    removeFromCart.setAttribute("id", "removeFromCartComputerNetwork");
+    removeFromCart.innerHTML = "Remove From Cart";
+    li.appendChild(removeFromCart);
+    document.getElementById("basket").appendChild(li);
+    obj.style.display = "none";
 }

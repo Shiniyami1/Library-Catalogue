@@ -10,3 +10,11 @@ img {
     max-height:200px;
     margin: auto;
 }
+.addToCart {
+    width: 150px;
+    background-color: greenyellow;
+}
+.removeFromCart {
+    width: 150px;
+    background-color: rgb(255, 75, 75);
+}
