@@ -18,3 +18,7 @@ img {
     width: 150px;
     background-color: rgb(255, 75, 75);
 }
+#checkoutBtn {
+    width: 85px;
+    background-color: aquamarine;
+}

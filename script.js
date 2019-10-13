@@ -91,6 +91,8 @@ document.getElementById("addMJ").onclick = function() {addToCartFunc("Michael Ja
 document.getElementById("addPilots").onclick = function() {addToCartFunc("Twenty-One Pilots: Blurryface (Album)", dueDateForCDs, this.parentNode.parentNode, "removeFromCartPilots")}; 
 
 function addToCartFunc(nameStr, dueStr, obj, removeID) {
+    if(basket.innerHTML!="none")
+        checkoutBtn.style.display="";
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(nameStr + " (due on " + dueStr + ") "));
     var removeFromCart = document.createElement("button");
@@ -106,9 +108,7 @@ function addToCartFunc(nameStr, dueStr, obj, removeID) {
 
 //Remove From Cart Function
 function removeFromCartFunc(removeParent, removeID){
-    
     var temp = document.getElementsByTagName("tr");
-
     switch(removeID){
         case "removeFromCartComputer":
             temp[1].style.display="";
@@ -128,7 +128,7 @@ function removeFromCartFunc(removeParent, removeID){
         case "removeFromCartGoT":
             temp[6].style.display="";
             break;
-        case "removeFromCartColdPlay":
+        case "removeFromCartColdplay":
             temp[7].style.display="";
             break;
         case "removeFromCartDrake":
@@ -142,5 +142,31 @@ function removeFromCartFunc(removeParent, removeID){
             break;
     }
     removeParent.parentNode.removeChild(removeParent);
+    if (basket.innerHTML=="")
+        checkoutBtn.style.display="none";
 
 }
+
+//CHECKOUT Buttons and Methods
+var checkoutBtn = document.getElementById("checkoutBtn");
+var basket = document.getElementById("basket");
+//Hide Checkout Button until there are items to checkout
+checkoutBtn.style.display="none";
+checkoutBtn.onclick = getConfirmation;
+
+function getConfirmation() {
+    var retVal = confirm("Are you sure you want to checkout?");
+    if(retVal == true ) {
+       basket.innerHTML="";
+       alert("Successfully checked out!\nPlease adhere to return policy and return items by their listed due dates!");
+       checkoutBtn.style.display="none";
+    }
+    else {
+       basket.innerHTML="";
+       var tableItems = document.getElementsByTagName("tr");
+       for(var i = 0; i < tableItems.length; i++){
+           tableItems[i].style.display="";
+       }
+       checkoutBtn.style.display="none";
+    }
+ }
