@@ -76,7 +76,9 @@ for (var i = 0; i < cdDueDate.length; i++) {
     var cdDueDateString = document.createTextNode(date);
     cdDueDate[i].appendChild(cdDueDateString);
 }
+delete date;
 
+//Add to Cart Buttons
 var addComputer = document.getElementById("addComputer");
 var addWebProg = document.getElementById("addWebProg");
 var addHarryPotter = document.getElementById("addHarryPotter");
@@ -88,25 +90,30 @@ var addDrake = document.getElementById("addDrake");
 var addMJ = document.getElementById("addMJ");
 var addPilots = document.getElementById("addPilots");
 
-addComputer.onclick = function() {addToCartFunc("Computer Networking: A Top-Down Approach", dueDateForBooks, this.parentNode.parentNode)}; //Simplified second paramater as due date for all books are equivalent
-addWebProg.onclick = function() {addToCartFunc("Web Programming by zyBooks", dueDateForBooks, this.parentNode.parentNode)};
-addHarryPotter.onclick = function() {addToCartFunc("Harry Potter and the Deathly Hallows", dueDateForBooks, this.parentNode.parentNode)};
-addOrientExp.onclick = function() {addToCartFunc("Murder on the Orient Express", dueDateForBooks, this.parentNode.parentNode)};
-addGatsby.onclick = function() {addToCartFunc("The Great Gatsby", dueDateForBooks, this.parentNode.parentNode)};
-addGoT.onclick = function() {addToCartFunc("A Song of Ice & Fire", dueDateForBooks, this.parentNode.parentNode)};
-addColdplay.onclick = function() {addToCartFunc("Coldplay: Parachutes (Album)", dueDateForCDs, this.parentNode.parentNode)};
-addDrake.onclick = function() {addToCartFunc("Drake: More Life (Album)", dueDateForCDs, this.parentNode.parentNode)};
-addMJ.onclick = function() {addToCartFunc("Michael Jackson: Bad (Album)", dueDateForCDs, this.parentNode.parentNode)};
-addPilots.onclick = function() {addToCartFunc("Twenty-One Pilots: Blurryface (Album)", dueDateForCDs, this.parentNode.parentNode)}; 
+//ADD to Cart Procedures
+addComputer.onclick = function() {addToCartFunc("Computer Networking: A Top-Down Approach", dueDateForBooks, this.parentNode.parentNode, "removeFromCartComputer", "listItemComputer")}; //Simplified second paramater as due date for all books are equivalent
+addWebProg.onclick = function() {addToCartFunc("Web Programming by zyBooks", dueDateForBooks, this.parentNode.parentNode, "removeFromCartWebProg", "listItemWebProg")};
+addHarryPotter.onclick = function() {addToCartFunc("Harry Potter and the Deathly Hallows", dueDateForBooks, this.parentNode.parentNode, "removeFromCartHarryPotter", "listItemHarryPotter")};
+addOrientExp.onclick = function() {addToCartFunc("Murder on the Orient Express", dueDateForBooks, this.parentNode.parentNode, "removeFromCartOrientExp", "listItemOrientExp")};
+addGatsby.onclick = function() {addToCartFunc("The Great Gatsby", dueDateForBooks, this.parentNode.parentNode, "removeFromCartGatsby", "listItemGatsby")};
+addGoT.onclick = function() {addToCartFunc("A Song of Ice & Fire", dueDateForBooks, this.parentNode.parentNode, "removeFromCartGoT", "listItemGoT")};
+addColdplay.onclick = function() {addToCartFunc("Coldplay: Parachutes (Album)", dueDateForCDs, this.parentNode.parentNode, "removeFromCartColdplay", "listItemColdplay")};
+addDrake.onclick = function() {addToCartFunc("Drake: More Life (Album)", dueDateForCDs, this.parentNode.parentNode, "removeFromCartDrake", "listItemDrake")};
+addMJ.onclick = function() {addToCartFunc("Michael Jackson: Bad (Album)", dueDateForCDs, this.parentNode.parentNode, "removeFromCartMJ", "listItemMJ")};
+addPilots.onclick = function() {addToCartFunc("Twenty-One Pilots: Blurryface (Album)", dueDateForCDs, this.parentNode.parentNode, "removeFromCartPilots", "listItemPilots")}; 
 
-function addToCartFunc(nameStr, dueStr, obj) {
+function addToCartFunc(nameStr, dueStr, obj, removeID, listItemID) {
     var li = document.createElement("li");
-    li.appendChild(document.createTextNode(nameStr + " (due on " + dueStr + ")       "));
+    li.setAttribute("id", listItemID);
+    li.appendChild(document.createTextNode(nameStr + " (due on " + dueStr + ") "));
     var removeFromCart = document.createElement("button");
+    removeFromCart.setAttribute("type", "button");
     removeFromCart.setAttribute("class", "removeFromCart");
-    removeFromCart.setAttribute("id", "removeFromCartComputerNetwork");
+    removeFromCart.setAttribute("id", removeID);
+    removeFromCart.onclick = function(){removeFromCartFunc(this.parentNode, removeID)};
     removeFromCart.innerHTML = "Remove From Cart";
     li.appendChild(removeFromCart);
     document.getElementById("basket").appendChild(li);
     obj.style.display = "none";
 }
+
